@@ -30,3 +30,34 @@ develop = ["pytest-cov", "flake8", "black", "pydocstyle"]
 
 [project.urls]
 Home = "https://github.com/telekom/nlu-bridge"
+
+[tool.tox]
+legacy_tox_ini = """
+[tox]
+isolated_build = True
+envlist = py37,py38
+
+[testenv]
+deps =
+    black
+    coverage
+    flake8
+    # isort
+    # mypy
+    # pylint
+    pytest
+    pytest-cov
+    scikit-learn
+    rasa
+    spacy
+    python-dotenv
+    lazy-imports
+    ratelimit
+
+commands =
+    black nlubridge
+    flake8 nlubridge
+    # pylint nlubridge
+    # mypy nlubridge
+    pytest tests/
+"""
